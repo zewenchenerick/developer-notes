@@ -217,3 +217,10 @@ git checkout a642e12 toc.txt # parent of the deleted commit, now the file is bac
 git commit -m "Restore toc.txt"
 ```
 
+#### Blaming
+```bash
+ git blame .gitignore
+ git blame -e .gitignore # show author email instead of name
+ git blame -e -L 1,3 .gitignore # show the first three commit
+```
+
