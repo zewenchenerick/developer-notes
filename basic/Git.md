@@ -267,3 +267,15 @@ git branch -D bugfix/signup-form # Force to delete the branch without merging
 ```
 > Noted: Potential Error if the branch is not fully merged
 
+
+### Comparing Branches
+```bash
+git log master..bugfix/signup-form # show all commits that are in bugfix but not in master
+
+# See actual changes
+git diff master..bugfix/signup-form
+# If HEAD -> Master
+git diff bugfix/signup-form
+git diff --name-only bugfix/signup-form
+git diff --status bugfix/signup-form
+```
