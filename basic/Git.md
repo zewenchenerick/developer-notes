@@ -201,3 +201,8 @@ git shortlog -nse --before="2020-01-01" --after="2021-01-01"
 - `-e` or `--email`: Show the email address of each author
 
 
+#### Viewing the History of a File
+```bash
+git log --oneline --stat --patch .gitignore # file name at the end
+```
+
