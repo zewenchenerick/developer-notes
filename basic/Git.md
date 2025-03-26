@@ -177,3 +177,16 @@ git checkout master # return back to the master branch, then can create new comm
 ![Detached HEAD](../figures/detached-HEAD.png)
 > Noted: do not create a new commit in this state
 
+
+#### Finding Bugs using Bisect
+In order to find a bug, a good commit and a bad commit are required (divide the history into half).
+```bash
+git bisect start # start bisect
+git bisect bad # current commit is a bad commit
+git bisect good ca49180 # provide a good commit, and HEAD is detached to the middle between bad commit and good commit
+git bisect good # if the current commit is good, and then HEAD move to the middle between current commit and bad commit
+git bisect bad # if the current commit is bad, and then HEAD move to the middle between current commit and good commit, until the fist bad commit is found
+git log --oneline --all # can be used to check where HEAD is pointing to
+git bisect reset # return HEAD back to master, after finish
+```
+
