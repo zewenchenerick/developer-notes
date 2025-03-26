@@ -1,6 +1,6 @@
 
 
-## Foundation
+## Basic
 
 ### Why Version Control System
 - Track History
@@ -9,6 +9,62 @@
 ### Types of Version Control System
 - Centralized
 - Distributed
+
+### Setting
+There are three setting levels in git:
+1. **System**:
+    - **Scope**: Applies to every user and all repositories on the machine.
+    - **Location**: Stored in a system-wide configuration file (usually /etc/gitconfig on Linux/Mac, or in the Git installation directory on Windows).
+    - **Usage**: Use this level to enforce policies or default behaviors for all users on a system.
+    ```bash
+    git config --system <key> <value>
+    ```
+2. **Global**:
+    - **Scope**: Applies to the current user across all repositories on that machine.
+    - **Location**: Stored in the user’s home directory, typically in ~/.gitconfig.
+    - **Usage**: Ideal for user-specific configurations, such as name and email, which appear in commits.
+    ```bash
+    git config --global <key> <value>
+    ```
+3.  **Local**:
+    - **Scope**: Specific to a single repository.
+    - **Location**: Stored in the repository’s .git/config file.
+    - **Usage**: Use local settings for repository-specific options like remote URLs, branch settings, or some custom behaviors that differ from your global preferences.
+    ```bash
+    git config --local <key> <value>
+    ```
+
+#### Common Settings
+```bash
+git config --global user.name "xyh" # Sets global commit author name.
+git config --global user.email "abc@gmail.com" # Sets global commit author email.
+git config --global core.editor "" # Defines global default text editor for Git.
+git config --global core.autocrlf "" # windows - true, mac - input
+# Configures Git’s automatic line ending conversion based on OS.
+```
+> Note: Global Core Autocrlf
+> - On **Windows**: It’s common to set this to true so that Git converts **LF (Unix)** to **CRLF (Windows)** on checkout and vice versa on commit.
+> - On **MacOS/Linux**: It’s typical to set this to input so that line endings **remain in Unix format** on commit while **converting CRLF to LF on input if necessary**.  
+
+
+The file `config` can be open and updated:
+```bash
+git config --global -e # open global settings
+```
+
+
+#### Alias
+```bash
+# Set up custom command git lg 
+git config --global alias.lg "log --pretty=format:'%an committed %h'"
+```
+```bash
+# After set up
+git lg
+```
+The example of command result is shown below:
+
+![Example of `git lg` command output](../figures/git-lg-example.jpg)
 
 
 
