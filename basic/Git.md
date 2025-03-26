@@ -147,10 +147,18 @@ Example placeholders that expand to information extracted from the commit:
 Further information can be found in [git log documentation](https://git-scm.com/docs/git-log).
 
 
-#### View a commit
+#### View a Commit
 ```bash
 git show HEAD~2 # the change of commit 2 steps before latest commit
 git show HEAD~2: packages/react-reconciler/src/ReactFiberCommitWork.new.js # final version of this file stored in this commit
 git show HEAD~2 --name-only # show files have been modified in this commit (only name, without status)
 git show HEAD~2 --name-status # show modified files and their status in the commit
+```
+
+#### Viewing the Changes Across Commits
+```bash
+git diff HEAD~2 HEAD 
+git diff HEAD~2 HEAD  # find difference for specific file between two commit
+git diff HEAD~2 HEAD --name-only
+git diff HEAD~2 HEAD --name-status
 ```
