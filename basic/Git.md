@@ -206,3 +206,14 @@ git shortlog -nse --before="2020-01-01" --after="2021-01-01"
 git log --oneline --stat --patch .gitignore # file name at the end
 ```
 
+
+#### Restoring a Deleted File
+```bash
+git rm toc.txt
+git commit -m "Remove toc.txt"
+git log --oneline toc.txt # ambiguous argument
+git log --oneline -- toc.txt
+git checkout a642e12 toc.txt # parent of the deleted commit, now the file is back to working directory and staging area (ready to commit)
+git commit -m "Restore toc.txt"
+```
+
