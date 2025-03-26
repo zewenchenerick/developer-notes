@@ -42,7 +42,34 @@ git commit -ma 'refactor code.' # add and commit simultaneously
 ```bash
 git rm --cached -r bin/ 
 # -r stand for recursive (there multiple files under the path)
-```
+```  
 
 
 ## Browsing History
+### `git log`
+#### Basic
+```bash
+git log # show all the history of commit
+git log --oneline # show all the history of commit in one line
+git log --oneline --stat # also show files have been changed (diff numbers of lines -- number of insertions and deletions)
+git log --oneline --patch # the diff details for each commit
+```
+
+#### Filtering the History
+```bash
+git log --oneline 3 # last 3 commit
+git log --oneline -author="Mosh" # filter by author name
+git log --oneline --before="2020-08-17" # filter commit before a specific date
+git log --oneline --after="2020-08-17"
+git log --oneline --after="yesterday"
+git log --oneline --after="one week ago"
+git log --oneline --grep="GUI" # this is case sensitive
+git log --oneline -S"hello()" 
+git log --oneline -S"Objective" --patch # lists commits that have introduced or removed the string "Objective" and displays the corresponding diff for each of those commits
+git log --oneline fd0d184..edb3594 # show commits between two specific commit
+git log --oneline toc.txt # show all commits that modified specific files
+git log --oneline  -- toc.txt # file name is ambiguous (only required when git complain)
+git log --oneline --patch -- toc.txt # git will recognize as file after two hyphens (--patch has to be before --) 
+```
+- The `--grep` option in git log lets you search commit messages for specific patterns.
+- `-S"hello()"` is the “pickaxe” option. It will show commits that added or removed that specific string in the diff.
