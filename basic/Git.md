@@ -190,3 +190,14 @@ git log --oneline --all # can be used to check where HEAD is pointing to
 git bisect reset # return HEAD back to master, after finish
 ```
 
+#### Finding Contributors Using Shortlog
+```bash
+git shortlog
+git shortlog -n -s -e
+git shortlog -nse --before="2020-01-01" --after="2021-01-01"
+```
+- `-n` or `--numbered`: sort output according to the number of commits per author
+- `-s` or `--summary`: Suppress commit descriptions, only provides commit count
+- `-e` or `--email`: Show the email address of each author
+
+
