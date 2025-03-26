@@ -224,3 +224,19 @@ git commit -m "Restore toc.txt"
  git blame -e -L 1,3 .gitignore # show the first three commit
 ```
 
+#### Tagging
+```bash
+git tag v1.0 # tag the current commit to v1.0
+git tag v1.0 5e7a828 # tag the specific (previous) commit to v1.0
+git checkout v1.0 # checkout using tag (instead of using commit id)
+git tag # show all tags that are created
+git tag -a v1.1 -m "My version 1.1" # annotated tag
+git tag -n # show tag message
+git show v1.1 # check the commit using tag
+
+git tag -d  v1.1 # delete a tag
+```
+- For light weight tag, message is the commit message
+- **Annotated Tag**:
+    - An annotated tag is a full Git object that includes metadata (such as the tagger’s name, email, date, and a message) and can be signed. It’s typically used for marking releases, offering more context than a lightweight tag.
+
