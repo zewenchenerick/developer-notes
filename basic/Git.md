@@ -162,3 +162,18 @@ git diff HEAD~2 HEAD  # find difference for specific file between two commit
 git diff HEAD~2 HEAD --name-only
 git diff HEAD~2 HEAD --name-status
 ```
+
+#### Checking Out a Commit
+```bash
+git checkout dad46ed # you are in 'detached HEAD' state, HEAD is pointing to the specific commit (refer figure below in Detached HEAD subsection)
+git log --oneline # only commits before this commits are visible
+git log --oneline --all # show all the commits
+git checkout master # return back to the master branch, then can create new commit
+```
+##### HEAD pointing to Master
+![HEAD & Master](../figures/head-master-pointer.png)
+
+##### Detached HEAD
+![Detached HEAD](../figures/detached-HEAD.png)
+> Noted: do not create a new commit in this state
+
