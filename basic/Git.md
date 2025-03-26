@@ -145,3 +145,12 @@ Example placeholders that expand to information extracted from the commit:
 - `Creset` reset display color back to white
 
 Further information can be found in [git log documentation](https://git-scm.com/docs/git-log).
+
+
+#### View a commit
+```bash
+git show HEAD~2 # the change of commit 2 steps before latest commit
+git show HEAD~2: packages/react-reconciler/src/ReactFiberCommitWork.new.js # final version of this file stored in this commit
+git show HEAD~2 --name-only # show files have been modified in this commit (only name, without status)
+git show HEAD~2 --name-status # show modified files and their status in the commit
+```
