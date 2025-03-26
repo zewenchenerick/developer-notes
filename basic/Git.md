@@ -73,3 +73,19 @@ git log --oneline --patch -- toc.txt # git will recognize as file after two hyph
 ```
 - The `--grep` option in git log lets you search commit messages for specific patterns.
 - `-S"hello()"` is the “pickaxe” option. It will show commits that added or removed that specific string in the diff.
+
+
+#### Formatting the log output
+```bash
+git log --pretty==format:"%an committed %h on %cd"
+git log --pretty==format:"%Cgreen%an%Creset committed %h on %cd"
+```
+Example placeholders that expand to information extracted from the commit:
+- `%H` commit hash
+- `%h` abbreviated commit hash
+- `%an` author name
+- `%cd` committed date
+- `Cgreen` set display color to green
+- `Creset` reset display color back to white
+
+Further information can be found in [git log documentation](https://git-scm.com/docs/git-log).
