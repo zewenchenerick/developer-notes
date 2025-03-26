@@ -147,7 +147,7 @@ Example placeholders that expand to information extracted from the commit:
 Further information can be found in [git log documentation](https://git-scm.com/docs/git-log).
 
 
-#### View a Commit
+### View a Commit
 ```bash
 git show HEAD~2 # the change of commit 2 steps before latest commit
 git show HEAD~2: packages/react-reconciler/src/ReactFiberCommitWork.new.js # final version of this file stored in this commit
@@ -155,7 +155,7 @@ git show HEAD~2 --name-only # show files have been modified in this commit (only
 git show HEAD~2 --name-status # show modified files and their status in the commit
 ```
 
-#### Viewing the Changes Across Commits
+### Viewing the Changes Across Commits
 ```bash
 git diff HEAD~2 HEAD 
 git diff HEAD~2 HEAD  # find difference for specific file between two commit
@@ -163,22 +163,22 @@ git diff HEAD~2 HEAD --name-only
 git diff HEAD~2 HEAD --name-status
 ```
 
-#### Checking Out a Commit
+### Checking Out a Commit
 ```bash
 git checkout dad46ed # you are in 'detached HEAD' state, HEAD is pointing to the specific commit (refer figure below in Detached HEAD subsection)
 git log --oneline # only commits before this commits are visible
 git log --oneline --all # show all the commits
 git checkout master # return back to the master branch, then can create new commit
 ```
-##### HEAD pointing to Master
+#### HEAD pointing to Master
 ![HEAD & Master](../figures/head-master-pointer.png)
 
-##### Detached HEAD
+#### Detached HEAD
 ![Detached HEAD](../figures/detached-HEAD.png)
 > Noted: do not create a new commit in this state
 
 
-#### Finding Bugs using Bisect
+### Finding Bugs using Bisect
 In order to find a bug, a good commit and a bad commit are required (divide the history into half).
 ```bash
 git bisect start # start bisect
@@ -190,7 +190,7 @@ git log --oneline --all # can be used to check where HEAD is pointing to
 git bisect reset # return HEAD back to master, after finish
 ```
 
-#### Finding Contributors Using Shortlog
+### Finding Contributors Using Shortlog
 ```bash
 git shortlog
 git shortlog -n -s -e
@@ -201,13 +201,13 @@ git shortlog -nse --before="2020-01-01" --after="2021-01-01"
 - `-e` or `--email`: Show the email address of each author
 
 
-#### Viewing the History of a File
+### Viewing the History of a File
 ```bash
 git log --oneline --stat --patch .gitignore # file name at the end
 ```
 
 
-#### Restoring a Deleted File
+### Restoring a Deleted File
 ```bash
 git rm toc.txt
 git commit -m "Remove toc.txt"
@@ -217,14 +217,14 @@ git checkout a642e12 toc.txt # parent of the deleted commit, now the file is bac
 git commit -m "Restore toc.txt"
 ```
 
-#### Blaming
+### Blaming
 ```bash
  git blame .gitignore
  git blame -e .gitignore # show author email instead of name
  git blame -e -L 1,3 .gitignore # show the first three commit
 ```
 
-#### Tagging
+### Tagging
 ```bash
 git tag v1.0 # tag the current commit to v1.0
 git tag v1.0 5e7a828 # tag the specific (previous) commit to v1.0
