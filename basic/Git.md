@@ -250,3 +250,20 @@ Git branching offers several key advantages:
 - **Parallel Development**: Multiple branches enable different team members to work simultaneously without interfering with each other.
 - **Merging**: Once the work on a branch is complete, you can merge it back into the main branch, integrating your changes.
 - **Workflow Flexibility**: Branches support various workflows (like feature branching, GitFlow, etc.) that streamline development and code review processes.
+
+
+### Working with Branches
+```bash
+git branch bugfix # create a new branch
+git branch        # list of branches
+git status        # can check the current branch as well
+
+git switch bugfix # switch branch to bugfix
+
+git branch -m bugfix bugfix/signup-form # rename branch: {old name} {new name}
+
+git branch -d bugfix/signup-form # delete the branch
+git branch -D bugfix/signup-form # Force to delete the branch without merging
+```
+> Noted: Potential Error if the branch is not fully merged
+
