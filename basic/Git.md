@@ -1,4 +1,4 @@
-
+# Comprehensive Git Notes
 
 ## Basic
 
@@ -265,7 +265,7 @@ git branch -m bugfix bugfix/signup-form # rename branch: {old name} {new name}
 git branch -d bugfix/signup-form # delete the branch
 git branch -D bugfix/signup-form # Force to delete the branch without merging
 ```
-> Noted: Potential Error if the branch is not fully merged
+> Noted: Potential Error if the branch is not fully merged during deleting
 
 
 ### Comparing Branches
@@ -278,4 +278,33 @@ git diff master..bugfix/signup-form
 git diff bugfix/signup-form
 git diff --name-only bugfix/signup-form
 git diff --status bugfix/signup-form
+```
+
+
+### Stashing
+**Definition**:
+Git stashing is a feature that temporarily saves your uncommitted changes—both staged and unstaged so you can work on something else and later reapply those changes.
+- **Temporary Storage**: It acts as a temporary storage area for modifications that you’re not yet ready to commit.
+- **Clean Working Directory**: Stashing reverts your working directory to a clean state, allowing you to switch contexts or branches without losing your work.
+- **Stack-Like Behavior**: Stashed changes are stored in a stack-like structure, enabling you to save multiple stashes and retrieve them later.
+- **Easy Retrieval**:
+You can apply or pop stashed changes back into your working directory when you’re ready to resume your work.
+- **Use Cases**: Ideal for quickly switching branches, working on urgent fixes, or pausing incomplete work without committing changes.
+```bash
+# create a new stash
+git stash push -m "New tax rules"
+# Saved working directory and index state On master called: New tax rules.
+
+git stash push -am "My new stash." # create new file after stash
+
+git stash list # list all the stashes we have
+
+git stash show stash@{1} # show diff between working directory and stash
+git stash show 1
+
+git stash apply 1 # take stash back to working directory
+
+git stash drop 1 # remove the specific stash
+
+git stash clear # remove all the stash
 ```
