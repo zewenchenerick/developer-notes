@@ -260,6 +260,8 @@ git status        # can check the current branch as well
 
 git switch bugfix # switch branch to bugfix
 
+git switch -C bugfix/login-form # create and switch to new created branch
+
 git branch -m bugfix bugfix/signup-form # rename branch: {old name} {new name}
 
 git branch -d bugfix/signup-form # delete the branch
@@ -308,3 +310,38 @@ git stash drop 1 # remove the specific stash
 
 git stash clear # remove all the stash
 ```
+
+
+### Merging
+There are types of merging:
+- Fast-forward merges: without diverge
+- 3-way merges: two branches diverge
+
+#### Fast-forward merges
+![Fast-Forward merges](../figures/fast-forward-merges.png)
+Then simply just bring the master forward.
+![master-forward](../figures/master-forward.png)
+Then we can remove the bugfix pointer.
+```bash
+# check the branch as first step
+git log --oneline --all --graph
+
+git merge bugfix/signup-form # make sure on the master branch
+
+git merge -ff bugfix/signup-form
+
+```
+
+#### 3-Way Merge
+![branch diverge](../figures/branch-diverge.png)
+![three way commit](../figures/three-way-commit.png)
+
+```bash
+git merge --no-ff bugfix/login-form # commit merge
+
+git config ff no # disable fast forward only in this repository
+git config --global ff no # disable fast forward globally
+
+git merge feature/change-password 
+```
+
