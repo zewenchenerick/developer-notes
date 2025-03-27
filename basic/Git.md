@@ -378,4 +378,9 @@ git mergetool
 # commit after solving all the conflicts
  ```
 
- 
+
+ ### Aborting a Merge
+ ```bash
+ # back to status before merge
+git merge --abort 
+ ```
