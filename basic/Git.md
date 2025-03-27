@@ -355,4 +355,27 @@ git branch --no-merged
  ```
 
 
- ###
+ ### Merge Conflicts
+ ```bash
+ git merge bugfix/change_password
+ # CONFLICT (content): merge conflict in {file name}
+ # Automatic merge failed; fix conflicts and then commit the result
+ ```
+
+ #### Visual Merge Tools
+ - vscode
+ - [p4merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge)
+ ```bash
+ # set up merge tool
+ git config --global merge.tool {merge tool}
+
+# for p4merge macos
+git config --global mergetool.p4merge.path "/Applications/p4merge.app/Content/MacOS/p4merge"
+
+# merge using merge tool
+git mergetool
+
+# commit after solving all the conflicts
+ ```
+
+ 
