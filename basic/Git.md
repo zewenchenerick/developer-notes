@@ -345,3 +345,14 @@ git config --global ff no # disable fast forward globally
 git merge feature/change-password 
 ```
 
+### Viewing the Merged Branches
+ ```bash
+ # list of branches that already merged into master (which means they are safe to be deleted)
+git branch --merged 
+
+# list of branches that have not merged into master
+git branch --no-merged
+ ```
+
+
+ ###
