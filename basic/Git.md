@@ -499,3 +499,14 @@ git mergetool
 git add .
 git commit -m "message"
 ```
+
+### Picking Files from Another Branch
+```bash
+git switch -C feature/send-mail
+git add .
+git commit
+git switch master
+git restore --source=feature/send-mail -- mail.txt # the files will be added into working directories
+git add .
+git commit
+```
