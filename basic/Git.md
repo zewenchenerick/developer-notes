@@ -384,3 +384,29 @@ git mergetool
  # back to status before merge
 git merge --abort 
  ```
+
+
+ ### Undoing a Faulty Merge
+ ![remove faulty commit](../figures/remove-faulty-commit.png)
+ Move master back to last commit and git will consider the merge commit as garbage commit and automatically remove it from repository
+ ```bash
+ git reset --hard HEAD~1
+ ```
+ There are 3 types of resetting: 
+ - `--soft`: working directory and staging area are not affected, only last snapshot
+ - `--mixed`: (default option) affect staging area and last snapshot (local changes in working directory will not change)
+ - `--hard`: take snapshot and putting into working directory
+```bash
+# undo the deletion of merge commit
+git reset --hard f634b2a
+```
+> Note: Only when commit history is not shared to others
+
+#### Reverting Commit
+The better way to undo is using **revert**.
+```bash
+git revert -m 1 HEAD # first parent
+```
+
+
+### 
