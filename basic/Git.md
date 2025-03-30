@@ -510,3 +510,94 @@ git restore --source=feature/send-mail -- mail.txt # the files will be added int
 git add .
 git commit
 ```
+
+
+## Collaboration
+
+
+### remote tacking branch
+```bash
+git remote
+git remote -v
+```
+
+### Fetching
+```bash
+git fetch origin # download all commit
+git branch -vv # difference between current branch and remote branch 
+git merge origin/master
+```
+
+
+### Pulling
+$$pull = fetch + merge$$
+```bash
+git pull # if branch diverse three way merge
+git pull --rebase # avoid three way merge --rebase
+```
+
+### Pushing
+```bash
+git push origin master # default will be git push
+```
+
+
+### Sharing tags
+```bash
+git tag v1.0
+git push origin v1.0
+git push origin --delete v1.0
+git tag -d v1.0
+```
+
+
+### Sharing Branches
+```bash
+git branch -vv
+git branch -r # check current remote tracking branch
+git push -u origin feature/password # push branch to remote repository
+git branch -r
+
+# delete remote branch 
+git push -d origin feature/password
+
+# delete local branch
+git switch master
+git branch -d feature/password
+```
+`-u` short for `--set-upstream`
+
+
+### Collaboration Workflow
+```bash
+git switch -C feature/change-password origin/feature/change-password
+git remote prune origin # remove tracking branches that are not under remote 
+```
+
+
+### Keeping a Forked Repository Up to Date
+```bash
+git remote # check current repository
+# shows the URLs that Git uses to fetch from and push to the remotes
+git remote -v  
+
+# add a new remote
+git remote add upstream {BASE_URL}
+git remote
+git remote -v
+
+# rename
+git remote rename upstream base
+# remove
+git remote rm base
+
+# fetch from upstream
+git fetch upstream
+
+# the local master is behind the upstream master, so merge is required
+git switch master
+git merge base/master
+# then push to origin
+git push
+```
+> It is good to merge master to bugfix branch, to avoid future conflicts
