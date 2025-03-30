@@ -409,4 +409,20 @@ git revert -m 1 HEAD # first parent
 ```
 
 
-### 
+### Squash Merge
+ ![squash merge](../figures/squash-merge.png)
+Then we can delete the bugfix branch. This is suitable for the small changes.
+```bash
+# Under branch e.g. bugfix/photo-upload 
+git merge --squash bugfix/photo-upload
+git commit -m "fix: photo upload page"
+
+# this branch won't show in
+git branch --merge # squash merged branch won't show
+git branch --no-merged # will show
+git branch -D fix/photo_upload # force delete only (git consider it as unmerged branch)
+```
+> For squash merge, it is important to remove the target branch. Otherwise, it might produce confusion in the future as it will still be shown in no merged command.
+
+
+###
