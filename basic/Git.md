@@ -480,3 +480,22 @@ To prevent automatic generate the back up files:
 ```bash
 git config --global mergetool.keepBackup false
 ```
+
+
+### Cherry Picking
+If the F1 has some new tiny feature that master want to have, but we are not ready to merge yet. Cherry Picking can help us pick F1 on top of master shown in the figure below.
+ ![cherry pick](../figures/cherry-picking.png)
+```bash
+git cherry-pick 5670ecc
+# Auto-merging toc.txt
+# CONFLICT (content): Merge conflict in toc.txt
+# error: could not apply a1f63e6... Update toc.txt 1
+# hint: after resolving the conflicts, mark the corrected paths
+# hint: with 'git add <paths>' or 'git rm <paths>'
+# hint: and commit the result with 'git commit'
+
+# use merge tool to fix the merge
+git mergetool
+git add .
+git commit -m "message"
+```
