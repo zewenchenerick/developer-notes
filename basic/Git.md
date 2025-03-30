@@ -425,4 +425,58 @@ git branch -D fix/photo_upload # force delete only (git consider it as unmerged 
 > For squash merge, it is important to remove the target branch. Otherwise, it might produce confusion in the future as it will still be shown in no merged command.
 
 
-###
+### Rebasing 
+As the merges become more and more, it might be confusing. It will be good to make our commit chain linear.
+ ![before rebase](../figures/pre-rebase.png)
+ ![rebase](../figures/rebase.png)
+Then we can do the fast forward merge.
+> Note: We need to be cautious of rebasing, as rebasing rewrites history. We should only use rebasing only for branches were commits of our local in the repository.
+
+The reason will be shown below:
+ ![rebase principle](../figures/rebase-principle.png)
+Because git can not change the root of F1 & F2 (immutable), so git will create another two new commits on top of current master. And then it will move pointer of features to $\overset{*}{F_2}$. If you have share F1 or F2 with others,  and other people create new commit on top of F2. After rebasing, their history is going to get screwed.
+
+As the time goes, git is going to remove F1 and F2 automatically.
+
+There are two possible consequence for rebasing:
+- no merge conflict
+```bash
+git switch -C 'feature/shopping-cart'
+git commit -m "add ..."
+git switch master
+git commit -m "change ..."
+git switch feature/shopping-cart # have to switch to target branch
+git rebase master
+git switch master
+git merge --ff feature/shopping-cart # fast forward merge 
+```
+
+- merge conflict
+```bash
+git rebase master
+# Auto-merging toc.txt
+# CONFLICT (content): Merge conflict in toc.txt
+# error: could not apply 97e93a6... Update toc.txt 1
+# Resolve all conflicts manually, mark them as resolved with
+# "git add/rm <conflicted_files>", then run "git rebase --continue".
+# You can instead skip this commit: run "git rebase --skip".
+# To abort and get back to the state before "git rebase", run "git rebase --abort".
+# Could not apply 97e93a6... Update toc.txt 1
+git mergetool
+# once the conflict is solved
+git rebase --continue # it will check conflict, complain if there is still a conflict
+git rebase --skip # if the conflict can be ignored -skip
+git rebase --abort # back state before rebasing
+```
+
+After rebasing, you will find a file called e.g. `toc.txt.orig`. This is the original file before rebasing from master created by p4merge.
+```bash
+git clean -fd # means force delete unstaged files (including directories like folder)
+
+# rm command can be used as well
+```
+
+To prevent automatic generate the back up files:
+```bash
+git config --global mergetool.keepBackup false
+```
