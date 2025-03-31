@@ -601,3 +601,111 @@ git merge base/master
 git push
 ```
 > It is good to merge master to bugfix branch, to avoid future conflicts
+
+
+
+## Rewriting History
+
+### The Golden Rule of Rewriting History
+**Don't rewrite public history!**
+
+
+### Undoing Commit
+```bash
+git reset --hard HEAD~1
+
+# differences between the staged changes and the last commit (HEAD)
+git diff --cached
+```
+
+
+### Reverting Commits
+If already pushed commit to remote.
+```bash
+git revert HEAD~2
+git revert HEAD~3..HEAD # revert (3, 0] commit
+# revert last 3 commit, do not include HEAD~3
+
+git revert --no-commit HEAD~3.. # HEAD can be dropped
+# abort
+git revert --abort
+
+# continue
+git revert --continue
+```
+
+### Recovering Lost Commits
+```bash
+# shows a log of where HEAD and branch references
+git reflog
+git reset --hard HEAD@{1}
+
+# show history of feature pointer
+git reflog show feature
+```
+
+
+### Amending the Last Commit
+```bash
+git add .
+git commit --amend -m "message"
+```
+
+
+### Amending an Earlier Commit
+```bash
+git rebase -i {HASH} # interactive
+git rebase --abort
+
+# do your change
+git add .
+git commit --amend -m "message"
+
+git rebase --continue
+```
+
+
+### Dropping Commits
+```bash
+git rebase -i 6cbd931~ # ^ means parent
+# drop commit
+
+git mergetool
+
+git rebase --continue
+```
+
+
+### Rewording Commit Messages
+```bash
+git rebase -i f283d7524^
+```
+
+### Re-ordering Commits
+```bash
+git rebase -i f283d7524^
+```
+
+
+### Squashing Commits
+```bash
+git rebase -i f283d7524
+# squash
+# you do have chance to re-type previous commit 
+
+git rebase -i f283d7524
+# fixup (ignore the commit and join it into previous one)
+# you do not have chance to re-type previous commit 
+```
+
+
+### Splitting a Commit
+```bash
+git rebase -i f283d7524
+# edit
+
+git reset --mixed HEAD^ # HEAD^ == HEAD~1
+# to change and commit it
+# to change and commit it
+git rebase --continue
+```
