@@ -1,4 +1,4 @@
-# 📒 Personal Notes 
+# 📒 Developer Notes 
 A collection of personal programming notes and visual aids.
 
 ## 📁 Project Structure
