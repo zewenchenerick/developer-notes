@@ -230,3 +230,89 @@ WHERE id = 1;
     FROM table_name
     WHERE condition;
     ```
+
+- **Retrieve All Columns**:
+    ```sql
+    SELECT * 
+    FROM table_name;
+    ```
+
+- **Filter Results with Conditions**:
+    ```sql
+    SELECT column1, column2
+    FROM table_name
+    WHERE condition;
+    ```
+
+- **Sort Results**:
+    ```sql
+    SELECT column1, column2
+    FROM table_name
+    ORDER BY column_name [ASC|DESC];
+    ```
+- **Limit**
+    - **Limit the Number of Results**:
+        ```sql
+        SELECT column1, column2
+        FROM table_name
+        LIMIT number_of_rows;
+        ```
+
+    - **Limit Results with Offset**:
+        ```sql
+        SELECT column1, column2
+        FROM table_name
+        LIMIT number_of_rows OFFSET offset_value;
+        ```
+
+        Example:
+        ```sql
+        SELECT name, age
+        FROM employees
+        LIMIT 5 OFFSET 10;
+        ```
+        This retrieves 5 rows starting from the 11th row.
+
+- **Group Results**:
+    ```sql
+    SELECT column1, COUNT(*)
+    FROM table_name
+    GROUP BY column1;
+    ```
+
+- **Filter Groups**:
+    ```sql
+    SELECT column1, COUNT(*)
+    FROM table_name
+    GROUP BY column1
+    HAVING COUNT(*) > value;
+    ```
+
+- **Join Tables**:
+    ```sql
+    SELECT table1.column1, table2.column2
+    FROM table1
+    INNER JOIN table2
+    ON table1.common_column = table2.common_column;
+    ```
+
+- **Subqueries**:
+    ```sql
+    SELECT column1
+    FROM table_name
+    WHERE column2 = (SELECT column2 FROM another_table WHERE condition);
+    ```
+
+- **Aggregate Functions**:
+    - `COUNT()`: Returns the number of rows.
+    - `SUM()`: Returns the sum of a column.
+    - `AVG()`: Returns the average value of a column.
+    - `MIN()`: Returns the smallest value in a column.
+    - `MAX()`: Returns the largest value in a column.
+
+    Example:
+    ```sql
+    SELECT COUNT(*), AVG(column1), MAX(column2)
+    FROM table_name;
+    ```
+
