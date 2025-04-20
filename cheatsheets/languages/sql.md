@@ -190,7 +190,7 @@ CREATE TABLE employees (
 - **Insert Data into a Table**:
     ```sql
     INSERT INTO table_name (column1, column2, ...)
-    VALUES (value1, value2, ...);
+    VALUES (value1, value2, ...), (value1, value2, ...);
     ```
 
 ### UPDATE
@@ -198,22 +198,14 @@ CREATE TABLE employees (
     ```sql
     UPDATE table_name
     SET column1 = value1, column2 = value2, ...
-    WHERE condition;
+    [WHERE condition];
     ```
 
 ### DELETE
 - **Delete Data from a Table**:
     ```sql
     DELETE FROM table_name
-    WHERE condition;
-    ```
-
-### SELECT
-- **Retrieve Data from a Table**:
-    ```sql
-    SELECT column1, column2, ...
-    FROM table_name
-    WHERE condition;
+    [WHERE condition];
     ```
 
 ### Example
@@ -227,6 +219,14 @@ WHERE id = 1;
 
 DELETE FROM employees
 WHERE id = 1;
-
-SELECT * FROM employees;
 ```
+
+
+## DQL (Data Query Language)
+### SELECT
+- **Retrieve Data from a Table**:
+    ```sql
+    SELECT column1, column2, ...
+    FROM table_name
+    WHERE condition;
+    ```
